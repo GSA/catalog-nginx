@@ -27,7 +27,16 @@ http {
 
     #gzip  on;
 
+    upstream app {
+      server ${APP_HOST}:${APP_PORT};
+    }
+
+    upstream pycsw {
+      server ${PYCSW_HOST}:${PYCSW_PORT};
+    }
+
     server {
+       
         listen   80;
         proxy_read_timeout  600;
 
